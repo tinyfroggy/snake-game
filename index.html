@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+  <title>Snake Game</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <div class="container">
+    <div>
+      <div class="scores">
+        <h1 id="score">000</h1>
+        <h1 id="highScore">000</h1>
+      </div>
+      <div class="game-border-1">
+        <div class="game-border-2">
+          <div class="game-border-3">
+            <div id="game-board"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h1 id="instruction-text">Press space bar or touch any button to start the game</h1>
+    <img id="logo" src="snake-game-ai-gen.png" alt="snake-logo" />
+
+    <div class="phone-buttons hidden">
+      <button id="Arrow-up-phone"><i class="fa-solid fa-arrow-up-long"></i></button>
+      <button id="Arrow-right-phone"><i class="fa-solid fa-arrow-right-long"></i></button>
+      <button id="Arrow-down-phone"><i class="fa-solid fa-arrow-down-long"></i></button>
+      <button id="Arrow-left-phone"><i class="fa-solid fa-arrow-left-long"></i></button>
+    </div>
+
+  </div>
+</body>
+
+</html>
