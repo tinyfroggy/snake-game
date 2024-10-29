@@ -105,7 +105,7 @@ body,
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 80vh;
     width: 100vw;
     position: relative;
   }
@@ -123,7 +123,7 @@ body,
 
   #logo {
     width: 200px;
-    top: 40%;
+    top: 38%;
     right: 25%;
   }
 
@@ -134,13 +134,17 @@ body,
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 75%;
+    top: 79%;
     right: 25%;
   }
 
   .phone-buttons button{
     width: 60px;
     height: 40px;
+    font-size: 40px;
+    background: none;
+    border: none;
+    color: white;
   }
 
   #Arrow-up-phone{

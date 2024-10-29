@@ -15,6 +15,7 @@ let gameInterval;
 let gameSpeedDelay = 200;
 let gameStarted = false;
 let collectedFoodSound = new Audio('/retro-coin-1-236677.mp3');
+collectedFoodSound.volume = 0.2;
 let gameOverSound = new Audio('/dead-8bit-41400.mp3');
 
 // Draw game map, snake, food
@@ -61,14 +62,27 @@ function drawFood() {
 
 // Generate food
 function generateFood() {
-  const x = Math.floor(Math.random() * gridSize) + 1;
-  const y = Math.floor(Math.random() * gridSize) + 1;
-  return { x, y };
+  let foodPosition;
+
+  while (true) {
+    const x = Math.floor(Math.random() * gridSize) + 1;
+    const y = Math.floor(Math.random() * gridSize) + 1;
+    foodPosition = { x, y };
+
+    // some is used to check if the food is on the snake or not it is returning true or false
+    const isOnSnake = snake.some(segment => segment.x === x && segment.y === y);
+    
+    if (!isOnSnake) break;
+  }
+
+  return foodPosition;
 }
+
 
 // Moving the snake
 function move() {
   const head = { ...snake[0] };
+
   switch (direction) {
     case 'up':
       head.y--;
@@ -85,8 +99,6 @@ function move() {
   }
 
   snake.unshift(head);
-
-  //   snake.pop();
 
   if (head.x === food.x && head.y === food.y) {
     collectedFoodSound.play();
@@ -122,20 +134,20 @@ function handleKeyPress(event) {
     (!gameStarted && event.key === ' ')
   ) {
     startGame();
-  } else {
-    switch (event.key) {
-      case 'ArrowUp':
-        direction = 'up';
-        break;
-      case 'ArrowDown':
-        direction = 'down';
-        break;
-      case 'ArrowLeft':
-        direction = 'left';
-        break;
-      case 'ArrowRight':
-        direction = 'right';
-        break;
+  }
+  else {
+    if (event.key === 'ArrowUp' && direction !== 'down') {
+      direction = 'up';
+    }
+    else if (event.key === 'ArrowDown' && direction !== 'up') {
+      direction = 'down';
+    }
+    else if (event.key === 'ArrowLeft' && direction !== 'right') {
+      direction = 'left';
+    }
+    else if (event.key === 'ArrowRight' && direction !== 'left') {
+      direction = 'right';
+      
     }
   }
 }
@@ -143,7 +155,6 @@ function handleKeyPress(event) {
 document.addEventListener('keydown', handleKeyPress);
 
 function increaseSpeed() {
-  //   console.log(gameSpeedDelay);
   if (gameSpeedDelay > 150) {
     gameSpeedDelay -= 5;
   } else if (gameSpeedDelay > 100) {
@@ -212,16 +223,16 @@ document.getElementById('Arrow-right-phone').addEventListener('click', startGame
 
 
 document.getElementById('Arrow-up-phone').addEventListener('click', () => {
-  direction = 'up';
+  if (direction !== 'down') direction = 'up';
 });
 document.getElementById('Arrow-down-phone').addEventListener('click', () => {
-  direction = 'down';
+  if (direction !== 'up') direction = 'down';
 });
 document.getElementById('Arrow-left-phone').addEventListener('click', () => {
-  direction = 'left';
+  if (direction !== 'right') direction = 'left';
 });
 document.getElementById('Arrow-right-phone').addEventListener('click', () => {
-  direction = 'right';
+  if (direction !== 'left') direction = 'right';
 });
 
 
