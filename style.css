@@ -141,7 +141,7 @@ body,
   .phone-buttons button{
     width: 60px;
     height: 40px;
-    font-size: 40px;
+    font-size: 70px;
     background: none;
     border: none;
     color: white;
@@ -150,18 +150,18 @@ body,
   #Arrow-up-phone{
     position: relative;
     top: -20%;
-    right: -35%;
+    right: -48%;
   }
 
   #Arrow-down-phone{
     position: relative;
-    top: 20%;
-    right: 15%;
+    top: 25%;
+    right: 11%;
   }
 
   #Arrow-left-phone{
     position: relative;
-    right: 70%;
+    right: 74%;
   }
 
   #Arrow-right-phone{
